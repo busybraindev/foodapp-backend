@@ -1,0 +1,66 @@
+npm i express mongoose jsonwebtoken bcrnpm i express mongoose jypt cors dotenv body parser molter striser molter stripe validape validator nodemon
+1️⃣ express
+
+Command: npm i express
+
+What it does: Express is a web framework for Node.js. It helps you create servers and APIs easily.
+
+Why you need it: Without Express, you’d have to use the built-in Node HTTP module, which is verbose.
+2️⃣ mongoose
+
+Command: npm i mongoose
+
+What it does: Mongoose is an ODM (Object Data Modeling) library for MongoDB.
+
+It allows you to define schemas and work with MongoDB documents using JavaScript objects.
+3️⃣ jsonwebtoken (JWT)
+
+Command: npm i jsonwebtoken
+
+What it does: Allows you to create and verify JSON Web Tokens for authentication.
+
+Use case: Logging users in without storing session data on the server.
+4️⃣ bcrypt
+
+Command: npm i bcrypt
+
+What it does: Hashes passwords securely before storing them in the database.
+5️⃣ cors
+
+Command: npm i cors
+
+What it does: Enables Cross-Origin Resource Sharing, allowing your frontend to call your backend from another domain or port.
+6️⃣ dotenv
+
+Command: npm i dotenv
+
+What it does: Loads environment variables from a .env file into process.env.
+
+Use case: Store secrets like database passwords or API keys outside your code.
+7️⃣ body-parser
+
+Command: npm i body-parser
+
+What it does: Parses incoming request bodies so you can access req.body.
+
+Note: In modern Express (v4.16+), you can use express.json() and express.urlencoded() instead, so body-parser is optional.
+8️⃣ multer
+
+Command: npm i multer
+
+What it does: Handles file uploads (images, PDFs, etc.) in Express.
+stripe
+
+Command: npm i stripe
+
+What it does: Allows you to integrate Stripe payment processing into your backend.
+🔟 validator
+
+Command: npm i validator
+
+What it does: Provides string validation and sanitization (emails, URLs, phone numbers, etc.).
+1️⃣1️⃣ nodemon
+
+Command: npm i nodemon --save-dev
+
+What it does: A development tool that automatically restarts your server when code changes.
