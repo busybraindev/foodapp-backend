@@ -136,16 +136,19 @@ res.json({success:true, message:"Status Updated"})
  }
  const deleteOrder = async (req, res) => {
   try {
-    const { orderId } = req.body;
-
-    if (!orderId) {
+    const userId = req.userId;
+   console.log(userId);
+   
+    if (!userId) {
       return res
         .status(400)
         .json({ success: false, message: "orderId is required" });
     }
 
     // Check if order exists
-    const order = await orderModel.findById(orderId);
+    const order = await orderModel.find({userId:userId});
+    console.log(order);
+    
     if (!order) {
       return res
         .status(404)
@@ -153,7 +156,7 @@ res.json({success:true, message:"Status Updated"})
     }
 
     // Delete order
-    await orderModel.findByIdAndDelete(orderId);
+    await orderModel.findByIdAndDelete(userId);
 
     res.json({ success: true, message: "Order deleted successfully" });
   } catch (err) {
