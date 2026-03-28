@@ -102,7 +102,7 @@ const verify = async (req, res) => {
 
 const usersOrder=  async (req,res)=>{
   try {
-    const orders= await orderModel.find({userId:req.userId})
+    const orders= await orderModel.find({userId:req.userId}).sort({ createdAt: -1 });
     res.json({success:true, data:orders})
   } catch (error) {
     console.log(error);
@@ -114,7 +114,7 @@ const usersOrder=  async (req,res)=>{
 }
  const listOrd = async(req,res)=>{
   try{
-    const orders =await orderModel.find({})
+    const orders =await orderModel.find({}).sort({ createdAt: -1 });
     res.json({success:true, data:orders})
   }catch(err){
     res.json({success:false, message:"Error"})
@@ -161,4 +161,31 @@ res.json({success:true, message:"Status Updated"})
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
-export {placeOrder,verify,usersOrder,listOrd,up,deleteOrder}
+const deleteOrde = async (req, res) => {
+  try {
+    const { orderId } = req.body;
+
+    if (!orderId) {
+      return res
+        .status(400)
+        .json({ success: false, message: "orderId is required" });
+    }
+
+    // Check if order exists
+    const order = await orderModel.findById(orderId);
+    if (!order) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Order not found" });
+    }
+
+    // Delete order
+    await orderModel.findByIdAndDelete(orderId);
+
+    res.json({ success: true, message: "Order deleted successfully" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+export {placeOrder,verify,usersOrder,listOrd,up,deleteOrder,deleteOrde}
